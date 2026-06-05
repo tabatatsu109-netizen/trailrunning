@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スリーピークス八ヶ岳トレイル 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g0:#0d2818;--g1:#1a4a2e;--g2:#2d6a42;--g3:#4a8c5c;--g4:#7ab88a;--g5:#b8d9c2;--g6:#e8f4ed;
+  --sand:#f5f0e8;--stone:#8a8070;--bark:#5a4a3a;
+  --red:#c0392b;--amber:#d68910;--sky:#e8f4ff;
+  --border:#dde8e2;--text:#1a1a1a;--muted:#607060;
+  --ff-display:'Bebas Neue',sans-serif;
+  --ff-body:'Noto Sans JP','Inter',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--ff-body);color:var(--text);background:var(--sand);min-height:100vh;overflow-x:hidden}
+
+/* ===== UTILITY ===== */
+.hidden{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* ===== EMERGENCY ===== */
+#em-banner{
+  display:none;position:sticky;top:0;z-index:500;
+  background:var(--red);color:#fff;
+  padding:.9rem 1.2rem;
+  border-bottom:3px solid rgba(255,255,255,.3);
+}
+.em-inner{max-width:1100px;margin:0 auto;display:flex;align-items:flex-start;gap:1rem}
+.em-pulse{width:12px;height:12px;border-radius:50%;background:#fff;flex-shrink:0;margin-top:4px;animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.em-content{flex:1}
+.em-label{font-size:.65rem;letter-spacing:2px;opacity:.8;font-weight:700;margin-bottom:.2rem}
+.em-subject{font-size:1rem;font-weight:900;line-height:1.3}
+.em-body-text{font-size:.82rem;opacity:.88;margin-top:.25rem;line-height:1.5}
+.em-meta{font-size:.68rem;opacity:.65;margin-top:.3rem}
+.em-close{background:rgba(255,255,255,.2);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.em-close:hover{background:rgba(255,255,255,.35)}
+
+/* ===== TOP NAV (desktop) ===== */
+.top-nav{
+  background:var(--g0);color:#fff;
+  height:52px;display:flex;align-items:center;
+  position:sticky;top:0;z-index:300;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+#em-banner+.top-nav{top:0}
+.nav-inner{
+  max-width:1100px;margin:0 auto;
+  padding:0 1.5rem;
+  display:flex;align-items:center;gap:0;
+  width:100%;
+}
+.nav-logo{
+  font-family:var(--ff-display);font-size:1.2rem;letter-spacing:2px;
+  color:#fff;margin-right:2rem;white-space:nowrap;flex-shrink:0;
+  display:flex;align-items:center;gap:.5rem;
+}
+.nav-logo span{color:var(--g4)}
+.nav-links{display:flex;gap:.15rem;flex:1}
+.nav-link{
+  background:none;border:none;color:rgba(255,255,255,.6);
+  font-family:var(--ff-body);font-size:.78rem;font-weight:500;
+  padding:.55rem .85rem;border-radius:6px;cursor:pointer;
+  transition:all .15s;white-space:nowrap;
+}
+.nav-link:hover,.nav-link.active{color:#fff;background:rgba(255,255,255,.1)}
+.nav-link.active{color:var(--g4)}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:.75rem}
+.nav-admin{
+  background:transparent;border:1px solid rgba(255,255,255,.25);
+  color:rgba(255,255,255,.7);font-size:.72rem;padding:.4rem .85rem;
+  border-radius:6px;cursor:pointer;font-family:var(--ff-body);
+  text-decoration:none;display:inline-flex;align-items:center;gap:5px;
+  transition:all .15s;
+}
+.nav-admin:hover{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.4)}
+.hamburger{display:none;background:none;border:none;color:#fff;font-size:22px;cursor:pointer;padding:4px}
+
+/* ===== MOBILE NAV ===== */
+.mobile-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:300;
+  background:var(--g0);border-top:1px solid rgba(255,255,255,.1);
+  display:none;
+}
+.mob-nav-inner{display:flex}
+.mob-nav-btn{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:.6rem .25rem;background:none;border:none;color:rgba(255,255,255,.55);
+  font-family:var(--ff-body);font-size:.55rem;font-weight:700;letter-spacing:.3px;
+  cursor:pointer;transition:color .15s;
+}
+.mob-nav-btn.active,.mob-nav-btn:hover{color:var(--g4)}
+.mob-nav-icon{font-size:19px;line-height:1;margin-bottom:1px}
+
+/* ===== PAGES ===== */
+.page{display:none}
+.page.active{display:block}
+main{padding-bottom:0}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:min(90vh, 680px);
+  background:var(--g0);
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 100% 80% at 100% 100%, rgba(74,140,92,.35) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 0% 0%, rgba(26,74,46,.8) 0%, transparent 60%),
+    linear-gradient(160deg, #0d2818 0%, #1a4a2e 40%, #0d2818 100%);
+}
+/* Mountain silhouette SVG background */
+.hero-mountain{
+  position:absolute;bottom:0;left:0;right:0;height:55%;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%230a1f10' fill-opacity='0.7' d='M0,320L48,293.3C96,267,192,213,288,192C384,171,480,181,576,165.3C672,149,768,107,864,112C960,117,1056,171,1152,186.7C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3Cpath fill='%230d2818' fill-opacity='0.5' d='M0,320L60,288C120,256,240,192,360,181.3C480,171,600,213,720,224C840,235,960,213,1080,197.3C1200,181,1320,171,1380,165.3L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") bottom/cover no-repeat;
+  pointer-events:none;
+}
+.hero-content{
+  position:relative;z-index:1;
+  max-width:1100px;margin:0 auto;padding:5rem 1.5rem 3.5rem;
+  flex:1;display:flex;flex-direction:column;justify-content:center;
+  width:100%;
+}
+.hero-eyebrow{
+  font-size:.72rem;font-weight:700;letter-spacing:3px;
+  color:var(--g4);text-transform:uppercase;margin-bottom:1.25rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--g4)}
+.hero-kv{
+  font-family:var(--ff-display);
+  font-size:clamp(3.5rem, 10vw, 7rem);
+  line-height:.92;color:#fff;letter-spacing:3px;
+  margin-bottom:.5rem;
+}
+.hero-kv .accent{color:var(--g4)}
+.hero-ja{
+  font-size:clamp(.95rem, 2.5vw, 1.25rem);font-weight:700;
+  color:rgba(255,255,255,.75);letter-spacing:2px;margin-bottom:2.5rem;
+}
+.hero-stats{
+  display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:2.5rem;
+}
+.hero-stat{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  border-radius:10px;padding:.75rem 1.25rem;
+  display:flex;flex-direction:column;gap:.15rem;
+  backdrop-filter:blur(4px);
+}
+.hs-value{font-family:var(--ff-display);font-size:1.6rem;color:#fff;letter-spacing:1px;line-height:1}
+.hs-label{font-size:.65rem;color:rgba(255,255,255,.55);letter-spacing:.8px;font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn-cta{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.85rem 1.75rem;border-radius:10px;
+  font-size:.9rem;font-weight:800;cursor:pointer;
+  font-family:var(--ff-body);text-decoration:none;
+  border:none;transition:all .2s;letter-spacing:.3px;
+}
+.btn-cta-primary{background:var(--g3);color:#fff}
+.btn-cta-primary:hover{background:var(--g2);transform:translateY(-2px)}
+.btn-cta-outline{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.btn-cta-outline:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  color:rgba(255,255,255,.4);font-size:.62rem;letter-spacing:2px;
+}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:scrollAnim 1.8s ease-in-out infinite}
+@keyframes scrollAnim{0%{opacity:0;transform:translateY(-10px)}50%{opacity:1}100%{opacity:0;transform:translateY(10px)}}
+
+/* ===== COUNTDOWN STRIP ===== */
+.countdown-strip{
+  background:var(--g1);color:#fff;
+  padding:1.1rem 1.5rem;
+}
+.cs-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.cs-left{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:.5px}
+.cs-nums{display:flex;gap:1rem;align-items:center}
+.cs-unit{display:flex;flex-direction:column;align-items:center;gap:.1rem}
+.cs-num{font-family:var(--ff-display);font-size:2.2rem;color:var(--g4);line-height:1;letter-spacing:1px}
+.cs-lbl{font-size:.58rem;color:rgba(255,255,255,.45);letter-spacing:1px;font-weight:600}
+.cs-sep{font-family:var(--ff-display);font-size:1.8rem;color:rgba(255,255,255,.2);line-height:1}
+.cs-date{font-size:.82rem;color:rgba(255,255,255,.55)}
+.cs-date strong{color:#fff;font-size:.95rem}
+
+/* ===== SECTION WRAPPER ===== */
+.section-wrap{max-width:1100px;margin:0 auto;padding:4rem 1.5rem}
+.section-wrap.tight{padding:2.5rem 1.5rem}
+.sec-eyebrow{
+  font-size:.68rem;font-weight:700;color:var(--g3);letter-spacing:3px;
+  text-transform:uppercase;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;
+}
+.sec-eyebrow::before{content:'';width:20px;height:1px;background:var(--g3)}
+.sec-title{font-family:var(--ff-display);font-size:clamp(2rem,5vw,3rem);color:var(--g0);letter-spacing:2px;line-height:1;margin-bottom:2rem}
+.sec-title .sub{font-size:.4em;font-family:var(--ff-body);font-weight:700;display:block;color:var(--muted);letter-spacing:1px;margin-top:.3rem}
+
+/* ===== HOME — NEWS STRIP ===== */
+.home-news-bg{background:#fff;border-top:3px solid var(--g1)}
+.news-strip{display:flex;flex-direction:column;gap:.5rem}
+.ns-item{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:1rem 0;border-bottom:1px solid var(--border);cursor:pointer;
+  transition:background .15s;
+}
+.ns-item:last-child{border-bottom:none}
+.ns-date{
+  font-size:.72rem;font-weight:700;color:var(--muted);
+  white-space:nowrap;padding-top:.15rem;min-width:75px;
+}
+.ns-title{font-size:.9rem;font-weight:700;line-height:1.4;flex:1}
+.ns-arrow{color:var(--g3);font-size:1.1rem;flex-shrink:0;margin-top:.1rem}
+.ns-more{
+  display:flex;align-items:center;gap:.4rem;
+  color:var(--g2);font-size:.8rem;font-weight:700;
+  margin-top:1.25rem;cursor:pointer;border:none;background:none;
+  font-family:var(--ff-body);padding:0;
+}
+.ns-more:hover{color:var(--g1)}
+
+/* ===== HOME — QUICK ACCESS ===== */
+.qa-bg{background:var(--g6);border-top:1px solid var(--border)}
+.qa-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:1rem;
+}
+.qa-card{
+  background:#fff;border-radius:14px;border:1px solid var(--border);
+  padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;
+  gap:.6rem;cursor:pointer;transition:all .2s;text-align:center;
+  font-family:var(--ff-body);
+}
+.qa-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(26,74,46,.12);border-color:var(--g3)}
+.qa-icon{font-size:2rem;line-height:1}
+.qa-label{font-size:.85rem;font-weight:800;color:var(--g1)}
+.qa-desc{font-size:.72rem;color:var(--muted);line-height:1.4}
+.qa-card.emg{border-color:#f5c0b8}
+.qa-card.emg .qa-label{color:var(--red)}
+.qa-card.emg:hover{box-shadow:0 8px 24px rgba(192,57,43,.12);border-color:var(--red)}
+
+/* ===== ABOUT ===== */
+.about-bg{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+.about-cell{background:#fff;padding:1.25rem 1.5rem}
+.about-cell .lbl{font-size:.65rem;font-weight:700;color:var(--g3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.4rem}
+.about-cell .val{font-size:.92rem;font-weight:700;line-height:1.5;color:var(--g0)}
+.about-cell .val-sm{font-size:.78rem;color:var(--muted);margin-top:.2rem;line-height:1.55}
+.about-cell-wide{grid-column:1 / -1}
+.concept-box{
+  background:var(--g0);color:#fff;border-radius:14px;
+  padding:2rem 1.75rem;margin-top:2rem;position:relative;overflow:hidden;
+}
+.concept-box::after{
+  content:'THREE\APEAK';white-space:pre;
+  font-family:var(--ff-display);font-size:8rem;color:rgba(255,255,255,.04);
+  position:absolute;right:-1rem;top:-1rem;line-height:.9;pointer-events:none;
+}
+.concept-box h3{font-family:var(--ff-display);font-size:1.6rem;color:var(--g4);letter-spacing:2px;margin-bottom:1rem}
+.concept-box p{font-size:.85rem;line-height:1.85;color:rgba(255,255,255,.8)}
+.concept-peaks{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1.5rem}
+.cp-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:1rem .85rem}
+.cp-num{font-family:var(--ff-display);font-size:2rem;color:var(--g4);line-height:1;margin-bottom:.3rem}
+.cp-text{font-size:.72rem;color:rgba(255,255,255,.65);line-height:1.55}
+
+/* ===== COURSE ===== */
+.course-bg{background:var(--sand)}
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+.course-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--border)}
+.course-card-header{padding:1.5rem;display:flex;justify-content:space-between;align-items:flex-start;position:relative}
+.cc-dist{font-family:var(--ff-display);font-size:3rem;color:#fff;letter-spacing:1px;line-height:1}
+.cc-unit{font-size:.8rem;font-family:var(--ff-body);opacity:.7;font-weight:600}
+.cc-name{text-align:right}
+.cc-sub{font-size:.62rem;color:rgba(255,255,255,.65);letter-spacing:1px;margin-bottom:.2rem;font-weight:600}
+.cc-title{font-size:1rem;font-weight:800;color:#fff;line-height:1.2}
+.course-stats-row{display:grid;grid-template-columns:repeat(3,1fr);background:#f8faf8;border-top:1px solid var(--border)}
+.csr-item{padding:.85rem;text-align:center;border-right:1px solid var(--border)}
+.csr-item:last-child{border-right:none}
+.csr-val{font-size:.95rem;font-weight:800;color:var(--g1)}
+.csr-lbl{font-size:.6rem;color:var(--muted);font-weight:700;letter-spacing:.5px;margin-top:.15rem;text-transform:uppercase}
+.course-desc{padding:1rem 1.25rem;font-size:.8rem;color:var(--muted);line-height:1.7;border-top:1px solid var(--border)}
+.course-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:20px;margin-bottom:.5rem}
+
+/* ===== SCHEDULE ===== */
+.schedule-bg{background:#fff}
+.day-tabs{display:flex;gap:.5rem;margin-bottom:2rem}
+.day-tab{
+  padding:.6rem 1.5rem;border-radius:8px;
+  font-size:.82rem;font-weight:700;cursor:pointer;border:none;
+  font-family:var(--ff-body);transition:all .15s;
+}
+.day-tab.active{background:var(--g1);color:#fff}
+.day-tab:not(.active){background:#f0f0e8;color:var(--muted)}
+.day-tab:not(.active):hover{background:var(--g6)}
+.sched-wrap{display:none}
+.sched-wrap.active{display:block}
+.sched-item{display:flex;gap:1.25rem;padding:.9rem 0;border-bottom:1px solid var(--border);position:relative}
+.sched-item:last-child{border-bottom:none}
+.sched-time-col{flex-shrink:0;width:70px;text-align:right;padding-top:.1rem}
+.st-time{font-family:var(--ff-display);font-size:1.3rem;color:var(--g1);line-height:1;letter-spacing:.5px}
+.st-ampm{font-size:.6rem;color:var(--muted);font-weight:700;letter-spacing:.5px}
+.sched-line{flex-shrink:0;width:24px;display:flex;flex-direction:column;align-items:center;padding-top:.35rem}
+.sl-dot{width:11px;height:11px;border-radius:50%;background:var(--g3);border:2px solid #fff;box-shadow:0 0 0 2px var(--g3);flex-shrink:0}
+.sl-line{width:2px;flex:1;background:var(--border);margin-top:4px}
+.sched-body{flex:1;padding-bottom:.3rem}
+.sb-title{font-size:.95rem;font-weight:700;color:var(--g0);margin-bottom:.4rem;line-height:1.3}
+.sb-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.tag{font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:20px}
+.tag-cat{background:var(--g6);color:var(--g1)}
+.tag-loc{background:#e8f0ff;color:#1a3a7a}
+.tag-warn{background:#fff3e0;color:#8a4500}
+
+/* ===== PARKING ===== */
+.parking-bg{background:var(--g6)}
+.parking-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1.5rem}
+.pk-card{background:#fff;border-radius:14px;border:1px solid var(--border);overflow:hidden}
+.pk-header{background:var(--g0);color:#fff;padding:.85rem 1.1rem;display:flex;align-items:center;gap:.6rem}
+.pk-icon{font-size:1.3rem}
+.pk-name{font-size:.9rem;font-weight:800;line-height:1.3}
+.pk-body{padding:1rem 1.1rem}
+.pk-row{display:flex;gap:.5rem;font-size:.8rem;padding:.3rem 0;border-bottom:1px solid var(--border)}
+.pk-row:last-of-type{border-bottom:none;margin-bottom:.75rem}
+.pk-key{color:var(--muted);font-weight:600;flex-shrink:0;width:70px}
+.pk-val{color:var(--text);line-height:1.5;flex:1}
+.pk-val.danger{color:var(--red);font-weight:700}
+.map-btn{
+  display:flex;align-items:center;justify-content:center;gap:.4rem;
+  background:var(--g1);color:#fff;padding:.7rem;border-radius:9px;
+  font-size:.82rem;font-weight:700;text-decoration:none;border:none;
+  font-family:var(--ff-body);cursor:pointer;transition:background .15s;width:100%;
+}
+.map-btn:hover{background:var(--g2)}
+.alert-box{
+  background:#fff8e8;border:1.5px solid #f0d090;border-radius:12px;
+  padding:1rem 1.25rem;display:flex;gap:.75rem;align-items:flex-start;
+}
+.alert-box.danger{background:#fef5f4;border-color:#f5c0b8}
+.alert-icon{font-size:1.3rem;flex-shrink:0;line-height:1.2}
+.alert-text{font-size:.82rem;line-height:1.65;color:var(--bark)}
+.alert-text strong{color:var(--g0)}
+.alert-box.danger .alert-text{color:#6a1a10}
+
+/* ===== NEWS PAGE ===== */
+.news-bg{background:#fff}
+.news-list{display:flex;flex-direction:column;gap:1rem}
+.news-card{
+  background:#fff;border-radius:14px;border:1px solid var(--border);
+  overflow:hidden;cursor:pointer;transition:box-shadow .2s;
+}
+.news-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.nc-head{padding:1.1rem 1.25rem;display:flex;gap:.9rem;align-items:flex-start}
+.nc-date-col{flex-shrink:0}
+.nc-month{font-size:.62rem;font-weight:700;color:var(--g3);text-transform:uppercase;letter-spacing:.8px}
+.nc-day{font-family:var(--ff-display);font-size:1.8rem;color:var(--g0);line-height:.9}
+.nc-year{font-size:.62rem;color:var(--muted)}
+.nc-divider{width:1px;background:var(--border);align-self:stretch;flex-shrink:0}
+.nc-body{flex:1}
+.nc-title{font-size:.95rem;font-weight:700;line-height:1.4;color:var(--g0);margin-bottom:.3rem}
+.nc-preview{font-size:.78rem;color:var(--muted);line-height:1.6}
+.nc-full{display:none;padding:.85rem 1.25rem 1.1rem;border-top:1px solid var(--border);font-size:.85rem;line-height:1.8;color:var(--text)}
+.nc-full.open{display:block}
+.nc-chevron{color:var(--g3);font-size:1rem;flex-shrink:0;margin-top:.2rem;transition:transform .2s}
+.nc-chevron.open{transform:rotate(180deg)}
+
+/* ===== SPONSORS ===== */
+.sp-bg{background:var(--sand)}
+.rank-section{margin-bottom:3rem}
+.rank-hd{
+  display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;
+  padding-bottom:.75rem;border-bottom:2px solid var(--border);
+}
+.rank-icon{font-size:1.5rem}
+.rank-name{font-family:var(--ff-display);font-size:1.5rem;letter-spacing:1px}
+.rank-name.platinum{color:#8a6200}
+.rank-name.gold{color:#c9a227}
+.rank-name.silver{color:#607080}
+.rank-name.bronze{color:#8a5030}
+.rank-count{font-size:.72rem;color:var(--muted);font-weight:600}
+.sp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.sp-card{background:#fff;border-radius:14px;border:1px solid var(--border);padding:1.35rem;transition:box-shadow .2s}
+.sp-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.sp-card.platinum{border-top:3px solid #c9a227}
+.sp-card.gold{border-top:3px solid #c9a227}
+.sp-card.silver{border-top:3px solid #8a9ba8}
+.sp-card.bronze{border-top:3px solid #a0714f}
+.sp-top{display:flex;gap:.85rem;align-items:flex-start;margin-bottom:.85rem}
+.sp-logo-box{
+  width:56px;height:56px;border-radius:12px;
+  background:var(--g6);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;flex-shrink:0;overflow:hidden;
+}
+.sp-logo-box img{width:100%;height:100%;object-fit:contain}
+.sp-info-name{font-size:.95rem;font-weight:800;color:var(--g0);margin-bottom:.3rem;line-height:1.3}
+.sp-badge{
+  display:inline-block;font-size:.6rem;font-weight:700;
+  padding:.15rem .5rem;border-radius:20px;letter-spacing:.5px;
+}
+.sp-badge.platinum{background:#fff5d6;color:#7a5800}
+.sp-badge.gold{background:#fff5d6;color:#7a5800}
+.sp-badge.silver{background:#e8edf0;color:#3a5060}
+.sp-badge.bronze{background:#f5ece6;color:#6a3a20}
+.sp-desc{font-size:.78rem;color:var(--muted);line-height:1.65;margin-bottom:.85rem}
+.sp-link{
+  display:flex;align-items:center;gap:.35rem;
+  background:var(--g6);color:var(--g1);border:1px solid var(--border);
+  padding:.55rem .85rem;border-radius:9px;font-size:.78rem;font-weight:700;
+  text-decoration:none;transition:background .15s;justify-content:center;
+}
+.sp-link:hover{background:var(--g5);color:var(--g0)}
+
+/* ===== FOOTER ===== */
+.site-footer{
+  background:var(--g0);color:rgba(255,255,255,.55);
+  padding:3rem 1.5rem 2rem;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-logo{font-family:var(--ff-display);font-size:1.8rem;color:#fff;letter-spacing:3px;margin-bottom:.4rem}
+.footer-sub{font-size:.75rem;margin-bottom:1.5rem;color:rgba(255,255,255,.4)}
+.footer-info{font-size:.78rem;line-height:2;margin-bottom:1.5rem}
+.footer-info a{color:var(--g4);text-decoration:none}
+.footer-info a:hover{color:#fff}
+.footer-copy{font-size:.68rem;border-top:1px solid rgba(255,255,255,.08);padding-top:1.25rem;color:rgba(255,255,255,.3)}
+
+/* ===== EMPTY ===== */
+.empty{text-align:center;padding:3rem 1rem;color:var(--muted)}
+.empty-icon{font-size:2.5rem;margin-bottom:.6rem}
+.empty p{font-size:.85rem}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .nav-links,.nav-right .nav-admin{display:none}
+  .hamburger{display:block}
+  .mobile-nav{display:block}
+  main{padding-bottom:60px}
+  .hero-content{padding:3rem 1.1rem 2.5rem}
+  .hero-stats{gap:.5rem}
+  .hero-stat{padding:.6rem .9rem}
+  .hs-value{font-size:1.3rem}
+  .section-wrap{padding:2.5rem 1.1rem}
+  .about-grid{grid-template-columns:1fr}
+  .courses-grid{grid-template-columns:1fr}
+  .parking-grid{grid-template-columns:1fr}
+  .concept-peaks{grid-template-columns:1fr}
+  .cs-nums{gap:.6rem}
+  .cs-num{font-size:1.7rem}
+  .day-tabs{flex-wrap:wrap}
+  .sp-grid{grid-template-columns:1fr}
+  .qa-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .hero-kv{font-size:3rem}
+  .qa-grid{grid-template-columns:1fr 1fr}
+  .hero-cta{flex-direction:column}
+  .btn-cta{justify-content:center;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== EMERGENCY BANNER ===== -->
+<div id="em-banner">
+  <div class="em-inner">
+    <div class="em-pulse"></div>
+    <div class="em-content">
+      <div class="em-label">⚠ EMERGENCY / 緊急連絡</div>
+      <div class="em-subject" id="em-subj"></div>
+      <div class="em-body-text" id="em-body-txt"></div>
+      <div class="em-meta" id="em-meta-txt"></div>
+    </div>
+    <button class="em-close" onclick="document.getElementById('em-banner').style.display='none'">✕</button>
+  </div>
+</div>
+
+<!-- ===== TOP NAV ===== -->
+<nav class="top-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span>🏔</span>THREE PEAKS <span>YATSUGATAKE</span>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link active" onclick="showPage('home')" data-page="home">HOME</button>
+      <button class="nav-link" onclick="showPage('about')" data-page="about">大会概要</button>
+      <button class="nav-link" onclick="showPage('course')" data-page="course">コース</button>
+      <button class="nav-link" onclick="showPage('schedule')" data-page="schedule">スケジュール</button>
+      <button class="nav-link" onclick="showPage('parking')" data-page="parking">駐車場</button>
+      <button class="nav-link" onclick="showPage('news')" data-page="news">ニュース</button>
+      <button class="nav-link" onclick="showPage('sponsors')" data-page="sponsors">スポンサー</button>
+    </div>
+    <div class="nav-right">
+      <a class="nav-admin" href="trail_race_manager.html">⚙ 管理画面</a>
+      <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<main>
+
+<!-- ── HOME ── -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-mountain"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">2026 · 第11回大会 · 山梨県北杜市</div>
+      <div class="hero-kv">THREE<br>PEAKS<br><span class="accent">TRAIL</span></div>
+      <div class="hero-ja">スリーピークス八ヶ岳トレイル</div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hs-value">6.13<span style="font-size:.8rem;opacity:.6">SAT</span></div>
+          <div class="hs-label">Day 1</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hs-value">6.14<span style="font-size:.8rem;opacity:.6">SUN</span></div>
+          <div class="hs-label">Day 2 · Main Race</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hs-value">44<span style="font-size:1rem;opacity:.6">km</span></div>
+          <div class="hs-label">Long Course</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hs-value">2,800<span style="font-size:1rem;opacity:.6">m</span></div>
+          <div class="hs-label">Elevation Gain</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hs-value">95<span style="font-size:1rem;opacity:.6">%</span></div>
+          <div class="hs-label">Trail Rate</div>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <button class="btn-cta btn-cta-primary" onclick="showPage('course')">🗺 コース詳細を見る</button>
+        <button class="btn-cta btn-cta-outline" onclick="showPage('schedule')">🕐 スケジュールを確認</button>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN STRIP -->
+  <div class="countdown-strip">
+    <div class="cs-inner">
+      <div class="cs-left">RACE DAY COUNTDOWN<br><span id="cs-race-date"></span></div>
+      <div class="cs-nums">
+        <div class="cs-unit"><div class="cs-num" id="cd-d">--</div><div class="cs-lbl">DAYS</div></div>
+        <div class="cs-sep">:</div>
+        <div class="cs-unit"><div class="cs-num" id="cd-h">--</div><div class="cs-lbl">HRS</div></div>
+        <div class="cs-sep">:</div>
+        <div class="cs-unit"><div class="cs-num" id="cd-m">--</div><div class="cs-lbl">MIN</div></div>
+        <div class="cs-sep">:</div>
+        <div class="cs-unit"><div class="cs-num" id="cd-s">--</div><div class="cs-lbl">SEC</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- インシデント表示エリア（緊急度「高」があるとき表示） -->
+  <div id="home-inc-high" style="display:none;background:#c0392b;color:#fff;padding:1.1rem 1.5rem">
+    <div style="max-width:1100px;margin:0 auto">
+      <div style="font-size:.62rem;letter-spacing:2px;opacity:.75;margin-bottom:.4rem;font-weight:700;display:flex;align-items:center;gap:.5rem">
+        <span style="width:10px;height:10px;border-radius:50%;background:#fff;display:inline-block;animation:pulse 1.2s infinite"></span>
+        ⚠ 現場情報・参加者への通知
+      </div>
+      <div id="home-inc-list"></div>
+    </div>
+  </div>
+
+  <!-- お知らせバナー（旧emergency表示） -->
+  <div id="home-em" style="display:none;background:#8a4500;color:#fff;padding:1rem 1.5rem">
+    <div style="max-width:1100px;margin:0 auto">
+      <div style="font-size:.62rem;letter-spacing:2px;opacity:.75;margin-bottom:.3rem;font-weight:700">📢 運営からのお知らせ</div>
+      <div style="font-size:.95rem;font-weight:900" id="h-em-subj"></div>
+      <div style="font-size:.8rem;opacity:.85;margin-top:.25rem;line-height:1.6" id="h-em-body"></div>
+      <div style="font-size:.65rem;opacity:.6;margin-top:.25rem" id="h-em-ts"></div>
+    </div>
+  </div>
+
+  <!-- QUICK ACCESS -->
+  <div class="qa-bg">
+    <div class="section-wrap tight">
+      <div class="qa-grid">
+        <button class="qa-card" onclick="showPage('about')">
+          <div class="qa-icon">📋</div>
+          <div class="qa-label">大会概要</div>
+          <div class="qa-desc">開催日・会場・定員情報</div>
+        </button>
+        <button class="qa-card" onclick="showPage('course')">
+          <div class="qa-icon">🗺️</div>
+          <div class="qa-label">コース情報</div>
+          <div class="qa-desc">距離・標高・コース説明</div>
+        </button>
+        <button class="qa-card" onclick="showPage('schedule')">
+          <div class="qa-icon">🕐</div>
+          <div class="qa-label">スケジュール</div>
+          <div class="qa-desc">6/13・14のタイムテーブル</div>
+        </button>
+        <button class="qa-card" onclick="showPage('parking')">
+          <div class="qa-icon">🅿️</div>
+          <div class="qa-label">駐車場案内</div>
+          <div class="qa-desc">各エリア・マップリンク</div>
+        </button>
+        <button class="qa-card" onclick="showPage('news')">
+          <div class="qa-icon">📰</div>
+          <div class="qa-label">ニュース</div>
+          <div class="qa-desc">最新のお知らせ</div>
+        </button>
+        <button class="qa-card" onclick="showPage('sponsors')">
+          <div class="qa-icon">🤝</div>
+          <div class="qa-label">スポンサー</div>
+          <div class="qa-desc">協賛企業一覧</div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOME NEWS -->
+  <div class="home-news-bg">
+    <div class="section-wrap">
+      <div class="sec-eyebrow">Latest News</div>
+      <div class="sec-title">ニュース <span class="sub">最新お知らせ</span></div>
+      <div class="news-strip" id="home-news"></div>
+      <button class="ns-more" onclick="showPage('news')">すべてのお知らせを見る →</button>
+    </div>
+  </div>
+
+</div><!-- /page-home -->
+
+<!-- ── ABOUT ── -->
+<div class="page" id="page-about">
+  <div class="about-bg">
+    <div class="section-wrap">
+      <div class="sec-eyebrow">About Race</div>
+      <div class="sec-title">大会概要 <span class="sub">スリーピークス八ヶ岳トレイル 2026</span></div>
+      <div class="about-grid">
+        <div class="about-cell">
+          <div class="lbl">開催日</div>
+          <div class="val">2026年6月13日（土）・14日（日）</div>
+          <div class="val-sm">13日：バーティカル・DOG・キッズ<br>14日：One Pack Line・Attack Line</div>
+        </div>
+        <div class="about-cell">
+          <div class="lbl">開催場所</div>
+          <div class="val">三分一湧水館</div>
+          <div class="val-sm">山梨県北杜市長坂町小荒間292-1<br>（スタート＆ゴール）</div>
+        </div>
+        <div class="about-cell">
+          <div class="lbl">選手受付</div>
+          <div class="val">13日 11:00〜16:00（推奨）</div>
+          <div class="val-sm">14日朝も受付あり（大変混雑）<br>スタート30分前までに完了必須</div>
+        </div>
+        <div class="about-cell">
+          <div class="lbl">スタート時間</div>
+          <div class="val">6:00 AM（One Pack Line）</div>
+          <div class="val-sm">7:00 AM（Attack Line）<br>14日（日）</div>
+        </div>
+        <div class="about-cell">
+          <div class="lbl">GPS計測</div>
+          <div class="val">IBUKI GPS 端末（全選手必携）</div>
+          <div class="val-sm">受付時に紐付け処理あり<br>携帯忘れ＝記録なし・失格</div>
+        </div>
+        <div class="about-cell">
+          <div class="lbl">主催・問い合わせ</div>
+          <div class="val">スリーピークス八ヶ岳トレイル実行委員会</div>
+          <div class="val-sm">trail38.com</div>
+        </div>
+        <div class="about-cell about-cell-wide">
+          <div class="lbl">種目・定員</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.5rem;margin-top:.5rem">
+            <div style="font-size:.82rem;padding:.5rem .75rem;background:var(--g6);border-radius:8px;line-height:1.6"><strong>One Pack Line（ロング）</strong><br>約44km・2800m± / 150名</div>
+            <div style="font-size:.82rem;padding:.5rem .75rem;background:var(--g6);border-radius:8px;line-height:1.6"><strong>Attack Line（ショート）</strong><br>約24km・1000m± / 400名</div>
+            <div style="font-size:.82rem;padding:.5rem .75rem;background:var(--g6);border-radius:8px;line-height:1.6"><strong>ヘリポートバッチコイ（バーティカル）</strong><br>約7km・1200m± / 50名</div>
+            <div style="font-size:.82rem;padding:.5rem .75rem;background:var(--g6);border-radius:8px;line-height:1.6"><strong>DOG ULTRA / HODOYOI / キッズ</strong><br>各50組・距離は種目による</div>
+          </div>
+        </div>
+      </div>
+      <div class="concept-box">
+        <h3>CONCEPT — THREE PEAKS</h3>
+        <p>大会名に込めた3つのPEAK。標高2500mの三ツ頭という難所（PEAK）、大自然を走る幸せ（PEAK）、そしてレース参加者以外にも八ヶ岳を楽しむ場（PEAK）を提供したいという想い。トレイル率95%、八ヶ岳・南アルプス・富士山の絶景が広がる、唯一無二のトレイルレース。</p>
+        <div class="concept-peaks">
+          <div class="cp-item">
+            <div class="cp-num">01</div>
+            <div class="cp-text">標高2500mの三ツ頭<br>最大の難所 (PEAK)</div>
+          </div>
+          <div class="cp-item">
+            <div class="cp-num">02</div>
+            <div class="cp-text">大自然を走れる<br>幸せ (PEAK)</div>
+          </div>
+          <div class="cp-item">
+            <div class="cp-num">03</div>
+            <div class="cp-text">八ヶ岳を楽しむ<br>場 (PEAK)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── COURSE ── -->
+<div class="page" id="page-course">
+  <div class="course-bg">
+    <div class="section-wrap">
+      <div class="sec-eyebrow">Course Info</div>
+      <div class="sec-title">コース情報 <span class="sub">2026年2月時点の情報・変更の可能性あり</span></div>
+      <div class="courses-grid">
+        <!-- One Pack Line -->
+        <div class="course-card">
+          <div class="course-card-header" style="background:var(--g0)">
+            <div>
+              <div class="cc-dist">44<span class="cc-unit">km</span></div>
+            </div>
+            <div class="cc-name">
+              <div class="cc-sub">LONG COURSE</div>
+              <div class="cc-title">One Pack Line</div>
+              <div style="font-size:.62rem;color:rgba(255,255,255,.55);margin-top:.25rem">6月14日（日）スタート</div>
+            </div>
+          </div>
+          <div class="course-stats-row">
+            <div class="csr-item">
+              <div class="csr-val">±2,800m</div>
+              <div class="csr-lbl">累積標高</div>
+            </div>
+            <div class="csr-item">
+              <div class="csr-val">11時間</div>
+              <div class="csr-lbl">制限時間</div>
+            </div>
+            <div class="csr-item">
+              <div class="csr-val">2 pt</div>
+              <div class="csr-lbl">ITRAポイント</div>
+            </div>
+          </div>
+          <div class="course-desc">
+            <span class="course-tag" style="background:var(--g6);color:var(--g1)">定員150名</span>
+            テクニカルな石場の下り・急登が続くOne Pack Line。最大難所は標高2500mの三ツ頭。スタート6:00AM。コースの95%がトレイルという純粋な山岳レース。
+          </div>
+        </div>
+        <!-- Attack Line -->
+        <div class="course-card">
+          <div class="course-card-header" style="background:var(--g1)">
+            <div>
+              <div class="cc-dist">24<span class="cc-unit">km</span></div>
+            </div>
+            <div class="cc-name">
+              <div class="cc-sub">SHORT COURSE</div>
+              <div class="cc-title">Attack Line</div>
+              <div style="font-size:.62rem;color:rgba(255,255,255,.55);margin-top:.25rem">6月14日（日）スタート</div>
+            </div>
+          </div>
+          <div class="course-stats-row">
+            <div class="csr-item">
+              <div class="csr-val">±1,000m</div>
+              <div class="csr-lbl">累積標高</div>
+            </div>
+            <div class="csr-item">
+              <div class="csr-val">6時間</div>
+              <div class="csr-lbl">制限時間</div>
+            </div>
+            <div class="csr-item">
+              <div class="csr-val">400名</div>
+              <div class="csr-lbl">定員</div>
+            </div>
+          </div>
+          <div class="course-desc">
+            <span class="course-tag" style="background:#e8f0ff;color:#1a3a7a">定員400名</span>
+            八ヶ岳高原の爽やかな風を感じながら、林道・遊歩道・棒道を駆け抜けるコース。スタート7:00AM。
+          </div>
+        </div>
+        <!-- Vertical -->
+        <div class="course-card">
+          <div class="course-card-header" style="background:var(--g2)">
+            <div>
+              <div class="cc-dist">7<span class="cc-unit">km</span></div>
+            </div>
+            <div class="cc-name">
+              <div class="cc-sub">VERTICAL RACE</div>
+              <div class="cc-title">ヘリポートバッチコイ</div>
+              <div style="font-size:.62rem;color:rgba(255,255,255,.55);margin-top:.25rem">6月13日（土）</div>
+            </div>
+          </div>
+          <div class="course-stats-row">
+            <div class="csr-item">
+              <div class="csr-val">±1,200m</div>
+              <div class="csr-lbl">累積標高</div>
+            </div>
+            <div class="csr-item">
+              <div class="csr-val">50名</div>
+              <div class="csr-lbl">定員</div>
+            </div>
+            <div class="csr-item">
+              <div class="csr-val">6/13</div>
+              <div class="csr-lbl">開催日</div>
+            </div>
+          </div>
+          <div class="course-desc">
+            <span class="course-tag" style="background:#fff3e0;color:#8a4500">バーティカルレース</span>
+            わずか7kmで標高差1200mを一気に駆け上がる超ハードなバーティカルレース。大会1日目（6/13土）開催。
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;background:#fff;border-radius:12px;padding:1.25rem 1.5rem;border:1px solid var(--border);font-size:.82rem;color:var(--muted);line-height:1.75">
+        📌 <strong style="color:var(--g0)">公式コースマップ</strong> は
+        <a href="https://trail38.com/about_race/#course" target="_blank" style="color:var(--g2);font-weight:700">trail38.com/about_race</a> でご確認ください。<br>
+        ※2026年2月時点の情報です。変更の可能性があります。最新情報は公式サイトまたはニュースでご確認ください。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SCHEDULE ── -->
+<div class="page" id="page-schedule">
+  <div class="schedule-bg">
+    <div class="section-wrap">
+      <div class="sec-eyebrow">Schedule</div>
+      <div class="sec-title">タイムスケジュール <span class="sub">大会当日の流れ</span></div>
+      <div class="day-tabs">
+        <button class="day-tab active" onclick="switchDay(0)">📅 6月13日（土）</button>
+        <button class="day-tab" onclick="switchDay(1)">📅 6月14日（日）</button>
+      </div>
+      <div class="sched-wrap active" id="sched-0"></div>
+      <div class="sched-wrap" id="sched-1"></div>
+      <div style="background:#fff8e8;border:1.5px solid #f0d090;border-radius:12px;padding:1rem 1.25rem;margin-top:1.5rem;font-size:.83rem;line-height:1.7;color:#6a4e00">
+        ⚠ <strong>受付は必ずスタート30分前までに完了してください。</strong>IBUKI GPS端末の紐付け処理が必要です。14日朝の受付は大変混雑しますので、できる限り13日中にお済ませください。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PARKING ── -->
+<div class="page" id="page-parking">
+  <div class="parking-bg">
+    <div class="section-wrap">
+      <div class="sec-eyebrow">Parking Info</div>
+      <div class="sec-title">駐車場案内 <span class="sub">2026年大会・重要変更あり</span></div>
+      <div style="margin-bottom:1.5rem">
+        <div class="alert-box danger" style="margin-bottom:.75rem">
+          <div class="alert-icon">🚨</div>
+          <div class="alert-text"><strong>【重要】</strong>2026年大会より駐車場の利用方法が変更になりました。選手の方はエントリー時に申し込み、メールに届いた<strong>駐車券（パスワード付き）</strong>をダウンロードして必ず持参してください。</div>
+        </div>
+        <div class="alert-box">
+          <div class="alert-icon">🚌</div>
+          <div class="alert-text"><strong>乗り合わせ・公共交通機関のご利用にご協力ください。</strong>駐車場台数に限りがあります。甲斐小泉駅からのアクセスも可能です。</div>
+        </div>
+      </div>
+      <div class="parking-grid">
+        <div class="pk-card">
+          <div class="pk-header">
+            <div class="pk-icon">🅿️</div>
+            <div class="pk-name">M1・R1エリア<br><span style="font-size:.72rem;opacity:.7">メイン会場近接</span></div>
+          </div>
+          <div class="pk-body">
+            <div class="pk-row"><div class="pk-key">対象</div><div class="pk-val">選手（駐車券必須）・13日は受付/マルシェ利用者も可</div></div>
+            <div class="pk-row"><div class="pk-key">利用時間</div><div class="pk-val">13日 11:00〜18:00 / 14日 早朝〜</div></div>
+            <div class="pk-row"><div class="pk-key">備考</div><div class="pk-val">満車の場合は順次別エリアへ案内</div></div>
+            <a class="map-btn" href="https://maps.google.com/?q=山梨県北杜市長坂町小荒間292-1" target="_blank">🗺️ Googleマップで開く</a>
+          </div>
+        </div>
+        <div class="pk-card">
+          <div class="pk-header">
+            <div class="pk-icon">🅿️</div>
+            <div class="pk-name">R2・R3エリア<br><span style="font-size:.72rem;opacity:.7">一般駐車場</span></div>
+          </div>
+          <div class="pk-body">
+            <div class="pk-row"><div class="pk-key">対象</div><div class="pk-val">選手（駐車券必須）</div></div>
+            <div class="pk-row"><div class="pk-key">注意</div><div class="pk-val">駐車券記載の指定場所に必ず駐車。不正コピー・不正使用禁止。</div></div>
+            <a class="map-btn" href="https://maps.google.com/?q=山梨県北杜市長坂町" target="_blank">🗺️ Googleマップで開く</a>
+          </div>
+        </div>
+        <div class="pk-card">
+          <div class="pk-header" style="background:var(--g2)">
+            <div class="pk-icon">🚌</div>
+            <div class="pk-name">R5・R6エリア<br><span style="font-size:.72rem;opacity:.7">シャトルバスあり（無料）</span></div>
+          </div>
+          <div class="pk-body">
+            <div class="pk-row"><div class="pk-key">対象</div><div class="pk-val">選手（駐車券必須）</div></div>
+            <div class="pk-row"><div class="pk-key">バス</div><div class="pk-val">R5・R6 ⇄ 会場、<strong>無料・予約不要</strong></div></div>
+            <div class="pk-row"><div class="pk-key">注意</div><div class="pk-val danger">車中泊禁止・早朝アイドリング禁止</div></div>
+            <a class="map-btn" href="https://maps.google.com/?q=山梨県北杜市" target="_blank">🗺️ Googleマップで開く</a>
+          </div>
+        </div>
+        <div class="pk-card">
+          <div class="pk-header" style="background:var(--bark)">
+            <div class="pk-icon">🚃</div>
+            <div class="pk-name">甲斐小泉駅前<br><span style="font-size:.72rem;opacity:.7">市営駐車場</span></div>
+          </div>
+          <div class="pk-body">
+            <div class="pk-row"><div class="pk-key">対象</div><div class="pk-val">13日受付・マルシェ利用者、一般来場者</div></div>
+            <div class="pk-row"><div class="pk-key">禁止</div><div class="pk-val danger">14日出場選手の利用禁止（発見次第失格）</div></div>
+            <div class="pk-row"><div class="pk-key">車中泊</div><div class="pk-val danger">絶対禁止</div></div>
+            <a class="map-btn" href="https://maps.google.com/?q=甲斐小泉駅" target="_blank">🗺️ 甲斐小泉駅をマップで開く</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── NEWS ── -->
+<div class="page" id="page-news">
+  <div class="news-bg">
+    <div class="section-wrap">
+      <div class="sec-eyebrow">News</div>
+      <div class="sec-title">ニュース <span class="sub">最新のお知らせ</span></div>
+      <div class="news-list" id="news-list-full"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SPONSORS ── -->
+<div class="page" id="page-sponsors">
+  <div class="sp-bg">
+    <div class="section-wrap">
+      <div class="sec-eyebrow">Sponsors</div>
+      <div class="sec-title">スポンサー <span class="sub">協賛企業・団体</span></div>
+      <div id="sp-list"></div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">THREE PEAKS YATSUGATAKE TRAIL</div>
+    <div class="footer-sub">スリーピークス八ヶ岳トレイルランニング 2026</div>
+    <div class="footer-info">
+      📅 2026年6月13日（土）・14日（日）<br>
+      📍 山梨県北杜市長坂町小荒間292-1 三分一湧水館<br>
+      🌐 <a href="https://trail38.com/" target="_blank">trail38.com</a>
+    </div>
+    <div class="footer-copy">© 2026 THREE PEAKS YATSUGATAKE TRAIL Executive Committee. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE NAV ===== -->
+<nav class="mobile-nav">
+  <div class="mob-nav-inner">
+    <button class="mob-nav-btn active" onclick="showPage('home')" data-mpage="home">
+      <div class="mob-nav-icon">🏠</div>HOME
+    </button>
+    <button class="mob-nav-btn" onclick="showPage('about')" data-mpage="about">
+      <div class="mob-nav-icon">📋</div>概要
+    </button>
+    <button class="mob-nav-btn" onclick="showPage('course')" data-mpage="course">
+      <div class="mob-nav-icon">🗺️</div>コース
+    </button>
+    <button class="mob-nav-btn" onclick="showPage('schedule')" data-mpage="schedule">
+      <div class="mob-nav-icon">🕐</div>スケジュール
+    </button>
+    <button class="mob-nav-btn" onclick="showPage('parking')" data-mpage="parking">
+      <div class="mob-nav-icon">🅿️</div>駐車場
+    </button>
+    <button class="mob-nav-btn" onclick="showPage('news')" data-mpage="news">
+      <div class="mob-nav-icon">📰</div>ニュース
+    </button>
+  </div>
+</nav>
+
+<script>
+// ===== JSONBin 設定（管理画面と同じキー） =====
+const JSONBIN_KEY = '$2a$10$fMVrBXjLBMllbrm18CDXy.ELqnMQmZbg65x13ZhaU55B/4Tuq4Ina';
+const JSONBIN_API = 'https://api.jsonbin.io/v3/b';
+
+// ===== SAMPLE DATA =====
+const SAMPLE_NEWS=[
+  {id:1,title:'【重要】大会当日のスケジュールについて',body:'大会当日のタイムスケジュールを公開します。スタート時刻：6:00AM（ロング）・7:00AM（ショート）、受付開始：4:30AM。詳細は当日配布のパンフレットをご確認ください。当日はIBUKI GPSの受け取りがありますので、時間に余裕をもってお越しください。',date:'2026-05-20',pub:1},
+  {id:2,title:'コース変更のお知らせ（第3区間）',body:'悪天候の影響により、第3区間のコースを一部変更します。変更後のルートは添付の地図をご参照ください。公式サイトでも随時更新します。安全確保のための変更ですので、ご了承ください。',date:'2026-05-25',pub:1},
+  {id:4,title:'ボランティアスタッフ募集中',body:'大会運営をお手伝いいただけるボランティアスタッフを募集しています。ご興味のある方は公式サイトのお問い合わせページよりご連絡ください。',date:'2026-04-15',pub:1}
+];
+const SAMPLE_SPONSORS=[
+  {id:1,name:'アルパインギア株式会社',desc:'登山・トレイルランニング専門の国内最大手アウトドアブランド。高品質なギアを提供しています。',url:'https://example.com',logo:'',rank:'プラチナ'},
+  {id:2,name:'THE NORTH FACE',desc:'アウトドアとスポーツのハイブリッドブランド。トレイルランニングシューズとウェアを協賛提供。',url:'https://www.goldwin.co.jp/tnf/run/',logo:'',rank:'ゴールド'},
+  {id:3,name:'ALTRA',desc:'ゼロドロップシューズのパイオニア。トレイルランナーに最適なフットシェイプデザイン。',url:'https://altrafootwear.jp/',logo:'',rank:'ゴールド'},
+  {id:4,name:'COROS JAPAN',desc:'GPSスポーツウォッチブランド。精密なトレーニングデータでアスリートをサポート。',url:'https://corosjapan.com/',logo:'',rank:'シルバー'},
+  {id:5,name:'ZEN NUTRITION',desc:'スポーツ栄養補助食品ブランド。エイドへの補給食提供でレースを後援。',url:'https://www.zennutrition.com',logo:'',rank:'ブロンズ'}
+];
+const SCHEDULE_DAY0=[
+  {time:'11:00',ampm:'AM',title:'選手受付開始',cats:['全種目'],loc:'三分一湧水館'},
+  {time:'13:00',ampm:'PM',title:'ヘリポートバッチコイ（バーティカル）スタート',cats:['バーティカル'],loc:'スタートゲート'},
+  {time:'13:00',ampm:'PM',title:'DOG HODOYOI スタート',cats:['ドッグペアショート'],loc:'スタートゲート'},
+  {time:'14:00',ampm:'PM',title:'キッズペア スタート',cats:['キッズ'],loc:'スタートゲート'},
+  {time:'16:00',ampm:'PM',title:'選手受付締め切り（推奨）',cats:['全種目'],loc:'受付会場'},
+  {time:'18:00',ampm:'PM',title:'バーティカル 競技終了',cats:['ヘリポートバッチコイ'],loc:'ゴールゲート'},
+];
+const SCHEDULE_DAY1=[
+  {time:'4:30',ampm:'AM',title:'選手受付・荷物預け開始',cats:['全種目'],loc:'三分一湧水館'},
+  {time:'5:30',ampm:'AM',title:'受付締め切り・荷物預け終了',cats:['全種目'],loc:'受付会場'},
+  {time:'5:50',ampm:'AM',title:'One Pack Line 選手整列',cats:['One Pack Line'],loc:'スタートゲート'},
+  {time:'6:00',ampm:'AM',title:'One Pack Line スタート',cats:['ロング 44km'],loc:'スタートゲート'},
+  {time:'6:50',ampm:'AM',title:'Attack Line 選手整列',cats:['Attack Line'],loc:'スタートゲート'},
+  {time:'7:00',ampm:'AM',title:'Attack Line スタート',cats:['ショート 24km'],loc:'スタートゲート'},
+  {time:'13:00',ampm:'PM',title:'Attack Line 制限時間',cats:['ショート'],loc:'ゴール'},
+  {time:'17:00',ampm:'PM',title:'One Pack Line 制限時間',cats:['ロング'],loc:'ゴール'},
+  {time:'18:00',ampm:'PM',title:'表彰式',cats:['全種目'],loc:'メインステージ'},
+];
+
+// ===== PAGE NAV =====
+const PAGES=['home','about','course','schedule','parking','news','sponsors'];
+function showPage(p){
+  PAGES.forEach(id=>{
+    document.getElementById('page-'+id).classList.toggle('active',id===p);
+  });
+  document.querySelectorAll('[data-page]').forEach(el=>el.classList.toggle('active',el.dataset.page===p));
+  document.querySelectorAll('[data-mpage]').forEach(el=>el.classList.toggle('active',el.dataset.mpage===p));
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(p==='news') renderNewsPage();
+  if(p==='sponsors') renderSponsorsPage();
+}
+function toggleMobileMenu(){}
+
+// ===== DATA（JSONBin から取得） =====
+const BIN_ID = '6a222056da38895dfe89bf9f'; // ← JSONBin BIN ID（固定）
+
+async function loadData(){
+  try{
+    const res = await fetch(`${JSONBIN_API}/${BIN_ID}`,{
+      headers:{'X-Master-Key':JSONBIN_KEY,'X-Bin-Meta':'false'}
+    });
+    if(!res.ok) throw new Error('fetch failed');
+    const d = await res.json();
+    const news = (d.news||SAMPLE_NEWS).filter(x=>x.pub);
+    news.sort((a,b)=>b.date.localeCompare(a.date));
+    return {
+      news,
+      sponsors: d.sponsors||SAMPLE_SPONSORS,
+      emergency: d.emergency||[],
+      incidents: d.incidentReports||[]
+    };
+  }catch(e){
+    console.warn('JSONBin read error:', e);
+    return {news:SAMPLE_NEWS, sponsors:SAMPLE_SPONSORS, emergency:[], incidents:[]};
+  }
+}
+
+// ===== インシデント表示（参加者向け） =====
+const INC_EMOJI_PUB = {体調不良:'🤒',ケガ:'🩹',熊出没:'🐻',倒木:'🌲',コースロスト:'❓',雷:'⚡',エイド不足:'🥤',その他:'📋'};
+
+function showIncidents(incidents){
+  // 参加者への通知が含まれる かつ 完了でない かつ 通知済・対応中・新規
+  const visible = incidents.filter(inc=>{
+    const forParticipants = (inc.notify||[]).some(n=>
+      n.includes('参加者') || n==='全員'
+    );
+    return forParticipants && inc.status !== '完了';
+  });
+
+  const highArea = document.getElementById('home-inc-high');
+  const list = document.getElementById('home-inc-list');
+  if(!visible.length){ highArea.style.display='none'; return; }
+
+  // 緊急度順でソート
+  const order = {高:0, 中:1, 低:2};
+  visible.sort((a,b)=>(order[a.level]||9)-(order[b.level]||9));
+
+  list.innerHTML = visible.map(inc=>`
+    <div style="
+      background:rgba(255,255,255,${inc.level==='高'?'.18':'.1'});
+      border-radius:10px;padding:.75rem 1rem;margin-bottom:.5rem;
+      border-left:3px solid rgba(255,255,255,${inc.level==='高'?'.8':'.4'});
+    ">
+      <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.25rem;flex-wrap:wrap">
+        <span style="font-size:1.1rem">${INC_EMOJI_PUB[inc.type]||'📋'}</span>
+        <span style="font-weight:900;font-size:.95rem">${inc.type}</span>
+        <span style="font-size:.68rem;background:rgba(255,255,255,.25);padding:.15rem .5rem;border-radius:12px;font-weight:700">
+          ${inc.level==='高'?'🔴 緊急':inc.level==='中'?'🟡 注意':'🟢 情報'}
+        </span>
+        <span style="font-size:.68rem;opacity:.7">${inc.course} · ${inc.point}</span>
+      </div>
+      ${inc.note?`<div style="font-size:.82rem;opacity:.9;line-height:1.55">${inc.note}</div>`:''}
+      <div style="font-size:.65rem;opacity:.6;margin-top:.25rem">${inc.createdAt||''}</div>
+    </div>
+  `).join('');
+  highArea.style.display='block';
+}
+
+// ===== EMERGENCY =====
+function initEmergency(em){
+  if(!em||!em.length)return;
+  const l=em[0];
+  const subj=l.subj||l.subject||'';
+  const body=l.body||'';
+  const ts=l.ts||'';
+  // sticky banner
+  document.getElementById('em-subj').textContent=subj;
+  document.getElementById('em-body-txt').textContent=body;
+  document.getElementById('em-meta-txt').textContent='送信日時：'+ts;
+  document.getElementById('em-banner').style.display='block';
+  // home area
+  document.getElementById('h-em-subj').textContent=subj;
+  document.getElementById('h-em-body').textContent=body;
+  document.getElementById('h-em-ts').textContent='送信日時：'+ts;
+  document.getElementById('home-em').style.display='block';
+}
+
+// ===== HOME NEWS =====
+function renderHomeNews(news){
+  const el=document.getElementById('home-news');
+  const top=news.slice(0,4);
+  if(!top.length){el.innerHTML='<div class="empty"><p>お知らせはありません</p></div>';return;}
+  el.innerHTML=top.map(n=>`
+    <div class="ns-item" onclick="showPage('news')">
+      <div class="ns-date">${n.date}</div>
+      <div class="ns-title">${n.title}</div>
+      <div class="ns-arrow">›</div>
+    </div>
+  `).join('');
+}
+
+// ===== FULL NEWS =====
+async function renderNewsPage(){
+  const el=document.getElementById('news-list-full');
+  el.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted)">☁️ 読み込み中...</div>';
+  const {news}=await loadData();
+  if(!news.length){el.innerHTML='<div class="empty"><div class="empty-icon">📰</div><p>現在公開中のお知らせはありません</p></div>';return;}
+  el.innerHTML=news.map(n=>{
+    const d=new Date(n.date);
+    const mon=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'][d.getMonth()]||'';
+    const day=d.getDate();
+    const yr=d.getFullYear();
+    return`<div class="news-card">
+      <div class="nc-head" onclick="toggleNewsCard(this)">
+        <div class="nc-date-col">
+          <div class="nc-month">${mon}</div>
+          <div class="nc-day">${day}</div>
+          <div class="nc-year">${yr}</div>
+        </div>
+        <div class="nc-divider"></div>
+        <div class="nc-body">
+          <div class="nc-title">${n.title}</div>
+          <div class="nc-preview">${n.body.length>80?n.body.slice(0,80)+'…':n.body}</div>
+        </div>
+        <div class="nc-chevron">▼</div>
+      </div>
+      <div class="nc-full">${n.body.replace(/\n/g,'<br>')}</div>
+    </div>`;
+  }).join('');
+}
+function toggleNewsCard(headEl){
+  const card=headEl.closest('.news-card');
+  const full=card.querySelector('.nc-full');
+  const chev=card.querySelector('.nc-chevron');
+  const prev=card.querySelector('.nc-preview');
+  const open=full.classList.toggle('open');
+  chev.classList.toggle('open',open);
+  prev.style.display=open?'none':'';
+}
+
+// ===== SPONSORS =====
+async function renderSponsorsPage(){
+  const el=document.getElementById('sp-list');
+  el.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted)">☁️ 読み込み中...</div>';
+  const {sponsors}=await loadData();
+  if(!sponsors.length){el.innerHTML='<div class="empty"><div class="empty-icon">🤝</div><p>スポンサー情報はありません</p></div>';return;}
+  const RANKS=['プラチナ','ゴールド','シルバー','ブロンズ'];
+  const EMOJI={プラチナ:'💎',ゴールド:'🥇',シルバー:'🥈',ブロンズ:'🥉'};
+  const CLS={プラチナ:'platinum',ゴールド:'gold',シルバー:'silver',ブロンズ:'bronze'};
+  let html='';
+  RANKS.forEach(rank=>{
+    const group=sponsors.filter(s=>s.rank===rank);
+    if(!group.length)return;
+    html+=`<div class="rank-section">
+      <div class="rank-hd">
+        <span class="rank-icon">${EMOJI[rank]}</span>
+        <span class="rank-name ${CLS[rank]}">${rank}</span>
+        <span class="rank-count">${group.length}社</span>
+      </div>
+      <div class="sp-grid">
+        ${group.map(s=>`
+          <div class="sp-card ${CLS[s.rank]}">
+            <div class="sp-top">
+              <div class="sp-logo-box">
+                ${s.logo?`<img src="${s.logo}" alt="${s.name}" onerror="this.parentNode.innerHTML='🏢'">`:'🏢'}
+              </div>
+              <div>
+                <div class="sp-info-name">${s.name}</div>
+                <span class="sp-badge ${CLS[s.rank]}">${s.rank}</span>
+              </div>
+            </div>
+            <div class="sp-desc">${s.desc||''}</div>
+            ${s.url?`<a class="sp-link" href="${s.url}" target="_blank">🔗 公式サイトを見る</a>`:''}
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  });
+  el.innerHTML=html;
+}
+
+// ===== SCHEDULE =====
+let currentDay=0;
+function switchDay(d){
+  currentDay=d;
+  document.querySelectorAll('.sched-wrap').forEach((el,i)=>el.classList.toggle('active',i===d));
+  document.querySelectorAll('.day-tab').forEach((el,i)=>el.classList.toggle('active',i===d));
+}
+function renderSchedule(){
+  renderSchedDay('sched-0',SCHEDULE_DAY0);
+  renderSchedDay('sched-1',SCHEDULE_DAY1);
+}
+function renderSchedDay(id,items){
+  const el=document.getElementById(id);
+  el.innerHTML=items.map((item,i)=>{
+    const isLast=i===items.length-1;
+    const tags=item.cats.map(c=>`<span class="tag tag-cat">${c}</span>`).join('');
+    const loc=item.loc?`<span class="tag tag-loc">📍 ${item.loc}</span>`:'';
+    return`<div class="sched-item">
+      <div class="sched-time-col">
+        <div class="st-time">${item.time}</div>
+        <div class="st-ampm">${item.ampm}</div>
+      </div>
+      <div class="sched-line">
+        <div class="sl-dot"></div>
+        ${!isLast?'<div class="sl-line"></div>':''}
+      </div>
+      <div class="sched-body">
+        <div class="sb-title">${item.title}</div>
+        <div class="sb-tags">${tags}${loc}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ===== COUNTDOWN =====
+function startCountdown(){
+  const race=new Date('2026-06-14T06:00:00+09:00');
+  function tick(){
+    const now=new Date();
+    const diff=race-now;
+    if(diff<=0){
+      document.getElementById('cd-d').textContent='0';
+      document.getElementById('cd-h').textContent='00';
+      document.getElementById('cd-m').textContent='00';
+      document.getElementById('cd-s').textContent='00';
+      return;
+    }
+    const d=Math.floor(diff/86400000);
+    const h=Math.floor((diff%86400000)/3600000);
+    const m=Math.floor((diff%3600000)/60000);
+    const s=Math.floor((diff%60000)/1000);
+    document.getElementById('cd-d').textContent=d;
+    document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick,1000);
+  document.getElementById('cs-race-date').innerHTML='<strong>2026.6.14 SAT</strong> 6:00 AM スタート';
+}
+
+// ===== INIT =====
+(async function init(){
+  startCountdown();
+  renderSchedule();
+  const{news, sponsors, emergency, incidents}=await loadData();
+  initEmergency(emergency);
+  showIncidents(incidents);
+  renderHomeNews(news);
+})();
+</script>
+</body>
+</html>
